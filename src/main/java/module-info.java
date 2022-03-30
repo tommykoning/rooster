@@ -8,4 +8,6 @@ module com.example.roosteropt {
 
     opens com.example.roosteropt to javafx.fxml;
     exports com.example.roosteropt;
+    exports com.example.roosteropt.creator;
+    opens com.example.roosteropt.creator to javafx.fxml;
 }
