@@ -13,6 +13,6 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
-    <Button text="Maak een nieuw rooster" onAction="#make"/>
-    <Button text="Bekijk een oud rooster" onAction="#view"/>
+    <Button text="Maak een nieuw rooster" onAction="#sceneLoad" id="Make"/>
+    <Button text="Bekijk een oud rooster" onAction="#sceneLoad" id="View"/>
 </VBox>
