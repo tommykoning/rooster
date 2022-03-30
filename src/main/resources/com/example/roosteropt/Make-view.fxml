@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -13,6 +12,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
@@ -67,25 +67,26 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <TabPane prefHeight="200.0" prefWidth="175.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="368.0" prefWidth="175.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
-                            <Tab text="Rooster">
+                            <Tab closable="false" text="Rooster">
                               <content>
-                                <AnchorPane minHeight="200.0" minWidth="182.0" prefHeight="200.0" prefWidth="182.0">
+                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="182.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;">
                                        <children>
                                           <Accordion layoutX="-8.0" layoutY="-1.0" minHeight="200.0" minWidth="175.0" prefHeight="226.0" prefWidth="189.0">
-                                            <panes>
+                                             <panes>
                                               <TitledPane animated="false" minHeight="50.0" minWidth="50.0" text="untitled 1">
                                                 <content>
-                                                  <AnchorPane minHeight="200.0" minWidth="200.0">
+                                                  <AnchorPane minHeight="200.0" minWidth="100.0" prefHeight="217.0" prefWidth="100.0" style="-fx-background-color: blue;">
                                                          <children>
-                                                            <Button layoutX="63.0" layoutY="2.0" mnemonicParsing="false" text="New entity" />
+                                                            <Button layoutX="57.0" layoutY="2.0" mnemonicParsing="false" text="New entity" />
                                                          </children>
                                                       </AnchorPane>
                                                 </content>
                                               </TitledPane>
-                                            </panes>
+                                             </panes>
                                           </Accordion>
+                                          <Button layoutX="42.0" layoutY="145.0" mnemonicParsing="false" text="New category" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -97,17 +98,17 @@
                               </Tab>
                           </tabs>
                         </TabPane>
-                        <Button layoutX="46.0" layoutY="250.0" mnemonicParsing="false" text="New category" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
                         <DatePicker layoutX="229.0" layoutY="37.0" />
-                        <DatePicker layoutX="17.0" layoutY="37.0" />
+                        <DatePicker layoutX="17.0" layoutY="37.0" prefWidth="174.0" />
                         <Text layoutX="52.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="van" textAlignment="CENTER" wrappingWidth="103.64453125" />
                         <Text layoutX="264.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tot" textAlignment="CENTER" wrappingWidth="103.64453125" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                        <ComboBox layoutX="29.0" layoutY="103.0" prefWidth="150.0" promptText="avalibility" />
+                        <ToggleButton layoutX="75.0" layoutY="122.0" mnemonicParsing="false" onAction="#aval" text="avalible" />
+                        <Button layoutX="313.0" layoutY="335.0" mnemonicParsing="false" text="Maak Rooster" />
                      </children>
                   </AnchorPane>
               </items>
