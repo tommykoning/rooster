@@ -13,12 +13,12 @@ public class Teacher {
     private Long id;
     private String name;
 
-    private String subjects;
+    private String subject;
 
     public Teacher() {}
     public Teacher(String name, String subject) {
         this.name = name;
-        this.subjects = subject;
+        this.subject = subject;
     }
 
     public Teacher(long id, String name, String subjects) {
@@ -39,6 +39,6 @@ public class Teacher {
     }
 
     public String getSubject() {
-        return subjects;
+        return subject;
     }
 }

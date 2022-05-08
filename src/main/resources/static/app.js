@@ -189,6 +189,20 @@ function addLesson() {
   $('#lessonDialog').modal('toggle');
 }
 
+function addTeacher() {
+  var subject = $("#teacher_subject").val().trim();
+  $.post("/teachers", JSON.stringify({
+    "name": $("#teacher_name").val().trim(),
+    "subject": subject
+  }), function () {
+    refreshTimeTable();
+  }).fail(function (xhr, ajaxOptions, thrownError) {
+    showError("Adding teacher (" + subject + ") failed.", xhr);
+  });
+  $('#teacherDialog').modal('toggle');
+  console.log(subject);
+}
+
 function deleteLesson(lesson) {
   $.delete("/lessons/" + lesson.id, function () {
     refreshTimeTable();
@@ -197,11 +211,11 @@ function deleteLesson(lesson) {
   });
 }
 
-function deleteLesson(lesson) {
+function deleteTeacher(teacher) {
   $.delete("/teachers/" + teacher.id, function () {
     refreshTimeTable();
   }).fail(function (xhr, ajaxOptions, thrownError) {
-    showError("Deleting lesson (" + lesson.name + ") failed.", xhr);
+    showError("Deleting lesson (" + teacher.name + ") failed.", xhr);
   });
 }
 
@@ -309,6 +323,9 @@ $(document).ready(function () {
   });
   $("#addRoomSubmitButton").click(function () {
     addRoom();
+  });
+  $("#addTeacherSubmitButton").click(function () {
+    addTeacher();
   });
 
   refreshTimeTable();
