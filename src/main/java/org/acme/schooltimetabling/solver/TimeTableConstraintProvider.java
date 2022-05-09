@@ -39,6 +39,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                 // Soft constraints
                 teacherRoomStability(constraintFactory),
                 teacherTimeEfficiency(constraintFactory),
+                studentTimeEfficiency(constraintFactory),
                 studentGroupSubjectVariety(constraintFactory)
         };
     }
@@ -103,6 +104,20 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                     return !between.isNegative() && between.compareTo(Duration.ofMinutes(30)) <= 0;
                 })
                 .reward("Teacher time efficiency", HardSoftScore.ONE_SOFT);
+    }
+
+    Constraint studentTimeEfficiency(ConstraintFactory constraintFactory) {
+        // A student prefers to get sequential lessons and dislikes gaps between lessons.
+        return constraintFactory
+                .forEach(Lesson.class)
+                .join(Lesson.class, Joiners.equal(Lesson::getStudentGroup),
+                        Joiners.equal((lesson) -> lesson.getTimeslot().getDayOfWeek()))
+                .filter((lesson1, lesson2) -> {
+                    Duration between = Duration.between(lesson1.getTimeslot().getEndTime(),
+                            lesson2.getTimeslot().getStartTime());
+                    return !between.isNegative() && between.compareTo(Duration.ofMinutes(30)) <= 0;
+                })
+                .reward("student time efficiency", HardSoftScore.ONE_SOFT.add(HardSoftScore.ONE_SOFT));
     }
 
     Constraint studentGroupSubjectVariety(ConstraintFactory constraintFactory) {
