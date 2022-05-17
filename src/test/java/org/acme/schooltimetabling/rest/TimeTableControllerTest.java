@@ -53,6 +53,8 @@ public class TimeTableControllerTest {
         for (Lesson lesson : timeTable.getLessonList()) {
             assertNotNull(lesson.getTimeslot());
             assertNotNull(lesson.getRoom());
+            assertNotNull(lesson.getTeacher());
+
         }
         assertTrue(timeTable.getScore().isFeasible());
     }
