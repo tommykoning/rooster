@@ -63,7 +63,7 @@ class TimeTableConstraintProviderTest {
         Lesson lessonInDifferentRoom = new Lesson(3, "Subject3", "Group3", TEACHER1, TIMESLOT1, ROOM2);
         constraintVerifier.verifyThat(TimeTableConstraintProvider::teacherRoomStability)
                 .given(lessonInFirstRoom, lessonInDifferentRoom, lessonInSameRoom)
-                .penalizesBy(2);
+                .rewardsWith(3);
     }
 
     @Test
@@ -74,6 +74,18 @@ class TimeTableConstraintProviderTest {
         Lesson secondTuesdayLesson = new Lesson(3, "Subject1", "Group3", TEACHER1, TIMESLOT3, ROOM1);
         Lesson thirdTuesdayLessonWithGap = new Lesson(4, "Subject1", "Group4", TEACHER1, TIMESLOT4, ROOM1);
         constraintVerifier.verifyThat(TimeTableConstraintProvider::teacherTimeEfficiency)
+                .given(singleLessonOnMonday, firstTuesdayLesson, secondTuesdayLesson, thirdTuesdayLessonWithGap)
+                .rewardsWith(1); // Second tuesday lesson immediately follows the first.
+    }
+
+    @Test
+    void studentTimeEfficiency() {
+        String teacher = "Teacher1";
+        Lesson singleLessonOnMonday = new Lesson(1, "Subject1","Group2", TEACHER1, TIMESLOT1, ROOM1);
+        Lesson firstTuesdayLesson = new Lesson(2, "Subject2", "Group1", TEACHER2, TIMESLOT2, ROOM1);
+        Lesson secondTuesdayLesson = new Lesson(3, "Subject3", "Group1", TEACHER3, TIMESLOT3, ROOM1);
+        Lesson thirdTuesdayLessonWithGap = new Lesson(4, "Subject1", "Group3", TEACHER1, TIMESLOT4, ROOM1);
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::studentTimeEfficiency)
                 .given(singleLessonOnMonday, firstTuesdayLesson, secondTuesdayLesson, thirdTuesdayLessonWithGap)
                 .rewardsWith(1); // Second tuesday lesson immediately follows the first.
     }
