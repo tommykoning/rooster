@@ -63,7 +63,7 @@ class TimeTableConstraintProviderTest {
         Lesson lessonInDifferentRoom = new Lesson(3, "Subject3", "Group3", TEACHER1, TIMESLOT1, ROOM2);
         constraintVerifier.verifyThat(TimeTableConstraintProvider::teacherRoomStability)
                 .given(lessonInFirstRoom, lessonInDifferentRoom, lessonInSameRoom)
-                .rewardsWith(3);
+                .penalizesBy(2);
     }
 
     @Test
