@@ -28,11 +28,7 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
 @PlanningEntity
 @Entity
-public class Lesson {
-
-    @PlanningId
-    @Id @GeneratedValue
-    private Long id;
+public class Lesson extends Base {
     private String subject;
     private String studentGroup;
 
@@ -59,7 +55,7 @@ public class Lesson {
 
     public Lesson(long id, String subject, String studentGroup, Teacher teacher, Timeslot timeslot, Room room) {
         this(subject, studentGroup);
-        this.id = id;
+        super.id = id;
         this.timeslot = timeslot;
         this.room = room;
         this.teacher = teacher;
@@ -73,10 +69,6 @@ public class Lesson {
     // ************************************************************************
     // Getters and setters
     // ************************************************************************
-
-    public Long getId() {
-        return id;
-    }
 
     public String getSubject() {
         return subject;

@@ -26,11 +26,7 @@ import javax.persistence.Id;
 import org.optaplanner.core.api.domain.lookup.PlanningId;
 
 @Entity
-public class Timeslot {
-
-    @PlanningId
-    @Id @GeneratedValue
-    private Long id;
+public class Timeslot extends Base {
 
     private DayOfWeek dayOfWeek;
     private LocalTime startTime;
@@ -48,7 +44,7 @@ public class Timeslot {
 
     public Timeslot(long id, DayOfWeek dayOfWeek, LocalTime startTime) {
         this(dayOfWeek, startTime, startTime.plusMinutes(50));
-        this.id = id;
+        super.id = id;
     }
 
     @Override
@@ -59,10 +55,6 @@ public class Timeslot {
     // ************************************************************************
     // Getters and setters
     // ************************************************************************
-
-    public Long getId() {
-        return id;
-    }
 
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
