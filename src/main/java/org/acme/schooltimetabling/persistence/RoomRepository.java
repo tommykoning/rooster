@@ -28,3 +28,4 @@ public interface RoomRepository extends PagingAndSortingRepository<Room, Long> {
     List<Room> findAll();
 
 }
+
